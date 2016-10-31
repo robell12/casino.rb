@@ -1,7 +1,10 @@
 require 'pry'
 require 'colorize'
+require_relative 'player'
+require_relative 'highlow'
 
 class Casino
+	attr_accessor :player
   def initialize
     puts "Welcome to the RUBY CASINO!".colorize(:light_blue)
     @player = Player.new
@@ -9,6 +12,12 @@ class Casino
   end
 
   def menu
+  	#pass player instance into each game
+  	#to class needed acces to player
+  	puts "You have some options---"
+  	puts "See bankroll"
+  	puts ""
+  	Highlow.new(player)
   end
 end
 
