@@ -1,3 +1,16 @@
+# start game player with name and money (class)
+# menu directs player to a game (slots, high low)
+# places bet and wins or loses (rand)
+# player is deducted bankroll when lose and adds when wins
+# ----bonus
+# option to move through menu to other games
+# switch players with new name and money (class)
+# while moving games the money stays the same
+# when you switch to other player, their money stays the same
+# random events occure while switching games and win loses money
+# roulette, craps, card game
+# create new game
+
 require 'pry'
 require 'colorize'
 require_relative 'player'
@@ -22,16 +35,3 @@ class Casino
 end
 
 Casino.new
-
-# start game player with name and money (class)
-# menu directs player to a game (slots, high low)
-# places bet and wins or loses (rand)
-# player is deducted bankroll when lose and adds when wins
-# ----bonus
-# option to move through menu to other games
-# switch players with new name and money (class)
-# while moving games the money stays the same
-# when you switch to other player, their money stays the same
-# random events occure while switching games and win loses money
-# roulette, craps, card game 
-# create new game
