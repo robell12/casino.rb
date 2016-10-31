@@ -27,7 +27,7 @@ class Highlow
 		puts "3) Return to Casino"
 		case gets.strip
 		when '1'
-			play_game
+			highlow_welcome
 		when '2'
 			highlow_rules
 		when '3'
