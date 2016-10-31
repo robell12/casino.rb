@@ -13,32 +13,20 @@
 
 require 'pry'
 require 'colorize'
-<<<<<<< 0b1c5dccf3796d70517763803849a412f4dbb846
-require  './player'
-require './highlow'
-=======
 require_relative 'player'
 require_relative 'highlow'
 require_relative 'wallet'
->>>>>>> New casino and wallet
+
 
 # module Start
 class Casino
 	attr_accessor :player, :wallet, :bank_roll, :cards
   def initialize
-<<<<<<< 0b1c5dccf3796d70517763803849a412f4dbb846
-    @player = Player.new
-    menu
-  end
-
-  def menu
-    puts "Welcome to the RUBY CASINO!".colorize(:light_blue)
-=======
   	puts "Welcome to the RUBY CASINO!".colorize(:light_blue)
     @player = Player.new
     menu
   end
->>>>>>> New casino and wallet
+
   	#pass player instance into each game
   	#to class needed acces to player
   	def menu
@@ -105,8 +93,7 @@ class Casino
 end
 
 Casino.new
-<<<<<<< 0b1c5dccf3796d70517763803849a412f4dbb846
-=======
+
 
 
 # start game player with name and money (class)
