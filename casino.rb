@@ -42,11 +42,12 @@ class Casino
   			menu
 		end
   end
+
   def atm
 			puts "How much money do you want to take out?"
 			money = gets.to_i
 			player.bank_roll = player.bank_roll + money
-			puts "Please wait while we process your card"
+			puts "Please wait while we process your card..."
 			puts "Your transaction was successful."
 			puts "You now have #{player.bank_roll}!"
 			menu
@@ -54,7 +55,3 @@ class Casino
 end
 
 Casino.new
-
-# make wallet work
-# add another game
-# add another player

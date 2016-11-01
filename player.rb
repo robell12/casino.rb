@@ -6,7 +6,7 @@ class Player
     @name = gets.strip
     puts "How much money are you willing to lose?"
     @bank_roll = gets.to_i + 1000
-    puts "Since this is your first time we gave you $1000 more."
+    puts "\nSince this is your first time we gave you $1000 more.\n"
     puts "You now have $#{@bank_roll}!"
 
 	end

@@ -5,7 +5,6 @@ class Highlow
 		@player = player
 		puts "Welcome to High-Low #{player.name}!".colorize(:light_blue)
     puts "\nYou have $#{player.bank_roll} dollars to play with.\n"
-    @bank_amount = player.bank_roll
 		highlow_welcome
 	end
 
@@ -15,6 +14,11 @@ class Highlow
 		if @player_bet == 0
 			puts "You have to make a bet if you want to play!"
 			highlow_welcome
+		elsif @player_bet > player.bank_roll
+			puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'"
+			puts "\nYou've been kicked out of the casino. Goodbye!"
+			exit
+		else
 		end
 		puts "Ok, your bet is for $#{@player_bet}. Are you ready to play?"
 		if gets.strip == 'yes'
@@ -78,6 +82,11 @@ class Highlow
 		if @player_bet == 0
 			puts "You have to make a bet if you want to play!"
 			another_bet
+		elsif @player_bet > player.bank_roll
+			puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'"
+			puts "\nYou've been kicked out of the casino. Goodbye!"
+			exit
+		else
 		end
 		puts "Your new bet is $#{@player_bet}. Let's go!"
 		play_game
@@ -95,8 +104,8 @@ class Highlow
 			highlow_menu
 		end
 	end
-	def lose
 
+	def lose
 		player.bank_roll = player.bank_roll - @player_bet
 		puts "You have #{player.bank_roll}"
 		play_again
