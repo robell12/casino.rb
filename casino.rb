@@ -35,7 +35,8 @@ class Casino
         PlayerTwo.new(self)
       when "use", "atm", "use atm"
       	atm
-  		when "exit", "casino", "exit casino"
+  		when "exit", "casino"
+        puts "Thank you for visiting the RUBY CASINO! Come back soon!"
   			exit
   		else
   			puts "Please select from the choices above."
