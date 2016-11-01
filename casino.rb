@@ -8,6 +8,7 @@ require_relative 'playertwo'
 require_relative 'bathroom'
 require_relative 'blackjack'
 
+
 class Casino
 	attr_accessor :player, :bank_roll, :cards
   def initialize
@@ -18,7 +19,7 @@ class Casino
 
   def menu
   	puts "----Games---"
-  	choice_1 = "\nHighlow\nBlackjack\nSlots\nTake A Chance\nUse ATM\nSwitch Player\nExit Casino\n "
+  	choice_1 = "\nHighlow\nBlackjack\nSlots\nGo To Bathroom\nUse ATM\nSwitch Player\nExit Casino\n "
     puts choice_1
   	puts "Please Select One"
   	choice = gets.strip.downcase
@@ -26,10 +27,10 @@ class Casino
       when "highlow"
   			Highlow.new(player, self)
   		when "blackjack"
-  			Blackjack.new
+  			Blackjack.new(player, self)
       when "slots"
         Slots.new(player, self)
-  		when "take", "a", "chance", "take a chance"
+  		when "bathroom", "go", "to" "go to bathroom"
   			Bathroom.new(player, self)
       when "switch", "player", "switch player"
         PlayerTwo.new(self)
