@@ -1,9 +1,11 @@
 class Highlow
+	attr_accessor :player, :casino
 	def initialize(player, casino)
 		@casino = casino
+		@player = player
 		puts "Welcome to High-Low #{player.name}!".colorize(:light_blue)
     puts "\nYou have $#{player.bank_roll} dollars to play with.\n"
-		@bank_amount = player.bank_roll
+    @bank_amount = player.bank_roll
 		highlow_welcome
 	end
 
@@ -28,6 +30,7 @@ class Highlow
 		puts "1) Play Game"
 		puts "2) Learn Rules"
 		puts "3) Return to Casino"
+		puts "4) Use ATM"
 		case gets.strip
 		when '1'
 			highlow_welcome
@@ -35,6 +38,8 @@ class Highlow
 			highlow_rules
 		when '3'
 			@casino.menu
+		when '4'
+			atm
 		else
 			puts "Please pick a valid menu option."
 		end
@@ -48,12 +53,15 @@ class Highlow
 		puts "You flip a #{@player_card}."
 		if @dealer_card > @player_card
 			puts "\nSorry, Dealer wins!\n".colorize(:red)
+		 lose
+			# puts "you have #{@wallet}"
 			play_again
 		elsif @dealer_card == @player_card
 			puts "\nIt's a push!\n".colorize(:yellow)
 			play_again
 		else
 			puts "\nCongrats! You win!\n".colorize(:green)
+			win
 			play_again
 		end
 	end
@@ -64,7 +72,6 @@ class Highlow
 			another_bet
 		else
 			puts "Thank you for playing! Come back soon!"
-			puts
 			highlow_menu
 		end
 	end
@@ -92,5 +99,28 @@ class Highlow
 			highlow_menu
 		end
 	end
+	def lose
 
+		player.bank_roll = player.bank_roll - @player_bet
+		@wallet = player.bank_roll
+		puts "You have #{@wallet}"
+		play_again
+	end
+
+	def win
+		player.bank_roll = player.bank_roll + (@player_bet * 2)
+		@wallet = player.bank_roll
+		puts "You have #{@wallet}"
+		play_again
+	end
+	
+	def atm
+			puts "How much money do you want to take out?"
+			money = gets.to_i
+			@wallet = @wallet + money
+			puts "Please wait while we process your card"#sleep(4)
+			puts "Your transaction was successful."
+			puts "You now have #{@wallet}!"
+			menu
+	end
 end

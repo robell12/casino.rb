@@ -7,7 +7,7 @@ require_relative 'slots'
 require_relative 'playerTwo'
 
 class Casino
-	attr_accessor :player, :wallet, :bank_roll, :cards
+	attr_accessor :player, :bank_roll, :cards
   def initialize
   	puts "Welcome to the RUBY CASINO!".colorize(:light_blue)
     @player = Player.new
@@ -41,3 +41,7 @@ class Casino
 end
 
 Casino.new
+
+# make wallet work
+# add another game
+# add another player
