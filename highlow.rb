@@ -1,17 +1,20 @@
-require 'pry'
-
-
 class Highlow
-	def initialize(player)
+	def initialize(player, casino)
+		@casino = casino
 		puts "Welcome to High-Low #{player.name}!".colorize(:light_blue)
     puts "\nYou have $#{player.bank_roll} dollars to play with.\n"
+		@bank_amount = player.bank_roll
 		highlow_welcome
 	end
 
 	def highlow_welcome
 		puts "How much do you want to bet?"
 		@player_bet = gets.to_i
-		puts "Ok, your bet is for $#{@player_bet}. Are you ready?"
+		if @player_bet == 0
+			puts "You have to make a bet if you want to play!"
+			highlow_welcome
+		end
+		puts "Ok, your bet is for $#{@player_bet}. Are you ready to play?"
 		if gets.strip == 'yes'
 			play_game
 		else
@@ -31,7 +34,7 @@ class Highlow
 		when '2'
 			highlow_rules
 		when '3'
-			@casino.new
+			@casino.menu
 		else
 			puts "Please pick a valid menu option."
 		end
@@ -68,13 +71,26 @@ class Highlow
 
 	def another_bet
 		puts "What is your bet?"
-		@new_bet = gets.to_i
-		if @new_bet == 0
-			puts "You need to make a bet."
+		@player_bet = gets.to_i
+		if @player_bet == 0
+			puts "You have to make a bet if you want to play!"
 			another_bet
 		end
-		puts "Your new bet is $#{@new_bet}. Let's go!"
+		puts "Your new bet is $#{@player_bet}. Let's go!"
 		play_game
+	end
+
+	def highlow_rules
+		puts "\nRules of High-Low\n"
+		puts "1) Player places a bet of his/her choosing."
+		puts "2) Dealer pulls one card at random from the deck."
+		puts "3) Dealer pulls another card at random from the deck for the player."
+		puts "4) Whoever has the higher card wins."
+		puts "5) It's as simple as that!"
+		puts "6) Push '6' to return to the menu"
+		if gets.strip == '6'
+			highlow_menu
+		end
 	end
 
 end
