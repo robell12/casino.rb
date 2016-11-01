@@ -3,6 +3,13 @@ class Highlow
 	def initialize(player, casino)
 		@casino = casino
 		@player = player
+		puts """
+ ____    ____    ____    ____
+|A   |  |K   |  |Q   |  |J   |
+|(\\/)|  | /\\ |  | /\\ |  | &  |
+| \\/ |  | \\/ |  |(__)|  |&|& |
+|   A|  |   K|  | /\\Q|  | | J|
+`----`  `----'  `----'  `----'"""
 		puts "Welcome to High-Low #{player.name}!".colorize(:light_blue)
     puts "\nYou have $#{player.bank_roll} dollars to play with.\n"
 		highlow_welcome
@@ -15,17 +22,17 @@ class Highlow
 			puts "You have to make a bet if you want to play!"
 			highlow_welcome
 		elsif @player_bet > player.bank_roll
-			puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'"
-			puts "\nYou've been kicked out of the casino. Goodbye!"
+			puts "\nGiant Black Security Guard: 'YOU'RE OUTTA HERE!'\n"
+			puts "You've been kicked out of the casino. Sucks to suck!"
 			exit
 		else
-		end
-		puts "Ok, your bet is for $#{@player_bet}. Are you ready to play?"
-		if gets.strip == 'yes'
-			play_game
-		else
-			puts "Come back when you're ready to play!"
-			highlow_menu
+			puts "Ok, your bet is for $#{@player_bet}. Are you ready to play?"
+			if gets.strip == 'yes'
+				play_game
+			else
+				puts "Come back when you're ready to play!"
+				highlow_menu
+			end
 		end
 	end
 

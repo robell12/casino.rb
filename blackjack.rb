@@ -1,4 +1,5 @@
 
+
 # require 'pry'
 
 
@@ -25,14 +26,14 @@
 # 			@rank.size.times do |i|
 # 				color = (i % 2 == 0) ? 'Black' : 'Red'
 # 				@cards << Card.new(@rank[i], suit, color)
-					
+
 # 			end
 # 		end
 # 	puts "#{@cards}"
 # 	dealer_card = @cards
 # 	puts "#{dealer_card}"
 # 	binding.pry
-	
+
 # 	# 	puts "How much money do you want to bet?"
 # 	# 	moneys = gets.strip.to_i
 # 	# 	puts "Okay you bet #{moneys}. Lets go!"
@@ -58,13 +59,13 @@
 # 		# binding.pry
 
 
-# 		# r = @d.cards.sample 
+# 		# r = @d.cards.sample
 
 # 		# puts "#{r.rank} of #{r.suit}"
 # 	end
 # end
 
-# d.cards.each do |c| 
+# d.cards.each do |c|
 	# puts "#{c.rank} #{.suit}"
 # 	new_card = c.rank.sample
 # 	puts "#{new_card}"
@@ -85,7 +86,7 @@
 # 	end
 
 # 	def dealer
-# 		r = @d.cards.sample 
+# 		r = @d.cards.sample
 # 		puts "#{r.suit} #{r.rank}"
 
 # 		# @d.cards.each do |c|
@@ -107,20 +108,20 @@
 # $d = []
 
 # class Card
-#   include Enumerable 
+#   include Enumerable
 #     # class variables (private)
 #     @@suit_value = Hash[ Suits.each_with_index.to_a ]
 #     @@rank_value = Hash[ Ranks.each_with_index.to_a ]
- 
+
 #     attr_reader :rank, :suit
 #     attr_accessor :value
- 
+
 #     def initialize(rank, suit)
 #         @rank = rank
 #         @suit = suit
 #     end
 
-#     def value 
+#     def value
 #       value = case @rank.to_i
 #         when 1
 #           11
@@ -162,7 +163,7 @@
 #   def initialize
 #     @cards = []
 #     Suits.each do |suit|
-#       Ranks.each do |rank| 
+#       Ranks.each do |rank|
 #         @cards << Card.new(rank, suit)
 #       end
 #     end
@@ -225,13 +226,13 @@
 # if playah.hand_value == 21
 #   puts "Player wins with BlackJack!"
 #   puts "Dealer's hand:"
-#   puts dealah.to_s    
+#   puts dealah.to_s
 # else
-#   until playah.hand_value > 21 
+#   until playah.hand_value > 21
 #     playah.switch_ace
 #     puts "Do you want to hit(h) or stay(s)?"
 #     action = $stdin.gets.chomp
-#     if action == "h" 
+#     if action == "h"
 #       puts "You chose to hit, here's your new hand"
 #       playah.hit
 #       puts playah.to_s
@@ -275,7 +276,7 @@
 # 		@moneys = gets.strip.to_i
 # 		random
 # 	end
-		
+
 #   def random
 # 		@card_p1 = @rank.sample
 # 		@card_p2 = @rank.sample
