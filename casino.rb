@@ -29,7 +29,7 @@ class Casino
       when "highlow"
   			Highlow.new(@player, self)
   		when "blackjack"
-  			Blackjack.new(@player, self)
+  			Deck.new(@player, self)
       when "slots"
         Slots.new(@player, self)
 			when "roulette"
