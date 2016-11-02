@@ -1,5 +1,3 @@
-require 'pry'
-
 class Slots
   attr_accessor :player, :casino
   def initialize(player, casino)
@@ -46,7 +44,7 @@ def slot_menu
   puts "1) Insert Bet"
   puts "2) Pull The Lever"
   puts "3) Feelin Lucky? (Pick this option only if you dare) ;P"
-  puts "4) Checkout And Return To The Casino"
+  puts "4) Cashout And Return To The Casino"
   puts "Pick a menu option 1-4"
 case gets.strip
   when '1'
@@ -56,8 +54,11 @@ case gets.strip
   when '3'
     feeling_lucky
   when '4'
-    puts "You have $#{player.bank_roll} left. Thank you for playing!"
+    puts "You have $#{player.bank_roll}."
+    puts "Thank you for playing!"
     @casino.menu
+  else
+    puts "Pick a valid menu option!".colorize(:yellow)
   end
 end
 
@@ -65,11 +66,11 @@ def insert_bet
   puts "How much do you want to bet?"
   @player_bet = gets.to_i
   if @player_bet == 0
-    puts "\nYou can't spin without a bet!\n"
+    puts "\nYou can't spin without a bet!\n".colorize(:yellow)
     slot_menu
   elsif @player_bet > player.bank_roll
-    puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'"
-    puts "\nYou've been kicked out of the casino. Sucks to suck!"
+    puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'".colorize(:red)
+    puts "\nYou've been kicked out of the casino. Sucks to suck!".colorize(:red)
     exit
   else
     puts "\nYour Bet: $#{@player_bet}"
@@ -125,7 +126,7 @@ end
 def jackpot
   player.bank_roll = player.bank_roll + (@player_bet * 4)
   puts "\n*JACKPOT!!*\n".colorize(:green)
-  puts "\nYou won $#{@player_bet * 4}!! You have: $#{player.bank_roll}\n"
+  puts "\nYou won $#{@player_bet * 4}!! You have: $#{player.bank_roll}\n".colorize(:green)
   play_again
 end
 

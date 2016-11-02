@@ -19,18 +19,18 @@ class Highlow
 		puts "How much do you want to bet?"
 		@player_bet = gets.to_i
 		if @player_bet == 0
-			puts "You have to make a bet if you want to play!"
+			puts "You have to make a bet if you want to play!".colorize(:yellow)
 			highlow_welcome
 		elsif @player_bet > player.bank_roll
-			puts "\nGiant Black Security Guard: 'YOU'RE OUTTA HERE!'\n"
-			puts "You've been kicked out of the casino. Sucks to suck!"
+			puts "\nGiant Black Security Guard: 'YOU'RE OUTTA HERE!'\n".colorize(:red)
+			puts "You've been kicked out of the casino. Sucks to suck!".colorize(:red)
 			exit
 		else
 			puts "Ok, your bet is for $#{@player_bet}. Are you ready to play?"
 			if gets.strip == 'yes'
 				play_game
 			else
-				puts "Come back when you're ready to play!"
+				puts "Come back when you're ready to play!".colorize(:yellow)
 				highlow_menu
 			end
 		end
@@ -40,16 +40,18 @@ class Highlow
 		puts "High-Low Menu".colorize(:light_blue)
 		puts "1) Play Game"
 		puts "2) Learn Rules"
-		puts "3) Return to Casino"
+		puts "3) Cashout And Return to Casino"
 		case gets.strip
 		when '1'
 			highlow_welcome
 		when '2'
 			highlow_rules
 		when '3'
+			puts "\nYou have $#{player.bank_roll}.\n"
+			puts "Thanks for playing! Have a good day!"
 			@casino.menu
 		else
-			puts "Please pick a valid menu option."
+			puts "Please pick a valid menu option.".colorize(:yellow)
 		end
 	end
 
@@ -87,11 +89,11 @@ class Highlow
 		puts "What is your bet?"
 		@player_bet = gets.to_i
 		if @player_bet == 0
-			puts "You have to make a bet if you want to play!"
+			puts "You have to make a bet if you want to play!".colorize(:yellow)
 			another_bet
 		elsif @player_bet > player.bank_roll
-			puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'"
-			puts "\nYou've been kicked out of the casino. Goodbye!"
+			puts "Giant Black Security Guard: 'YOU'RE OUTTA HERE!'".colorize(:red)
+			puts "\nYou've been kicked out of the casino. Goodbye!".colorize(:red)
 			exit
 		else
 		end

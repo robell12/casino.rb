@@ -1,20 +1,20 @@
-require 'pry'
+
 class Bathroom
 	attr_accessor :player, :casino
 	def initialize(player, casino)
 		@casino = casino
 		@player = player
 		events = [
-		"You were going to the bathroom and bumped into beautiful girl. 
+		"You were going to the bathroom and bumped into beautiful girl.
 		Also she is rich so in the divorce you get $6000.",
 		"You found 300 dollars in the bathroom.",
-		"You bumped into someone and they threatened to beat you up unless you give him $600. 
+		"You bumped into someone and they threatened to beat you up unless you give him $600.
 		You pay because he is a big fellow.",
 		"You lost your wallet.",
 		"A millionaire gives you $1000000 in the bathroom and invites you to visit him in Milan, Italy.",
 		"You stumble into the wrong room and see 30 or so Asain men in a back room.
 		They invite you to play. What do you say? yes/no",
-		"You get lost in the casino and walk into the tiger exibit. 
+		"You get lost in the casino and walk into the tiger exibit.
 		The medical bills cost $15000. It takes you 4 weeks to recover.",
 		"Snoop Dog runs into you. He offers you a smoke of his good stuff. What do you say? yes/no"
 
@@ -25,27 +25,27 @@ class Bathroom
 		when events[0]
 			puts events[0]
 			player.bank_roll = player.bank_roll + 6000
-			puts "Lucky you. Now you have $#{player.bank_roll}"
+			puts "Lucky you. Now you have $#{player.bank_roll}".colorize(:green)
 			@casino.menu
 		when events[1]
 			puts events[1]
 			player.bank_roll = player.bank_roll + 300
-			puts "Not much but something. You have $#{player.bank_roll}"
+			puts "Not much but something. You have $#{player.bank_roll}".colorize(:green)
 			@casino.menu
 		when events[2]
 			puts events[2]
 			player.bank_roll = player.bank_roll - 600
-			puts "You avoided the hospital. You have $#{player.bank_roll}"
+			puts "You avoided the hospital. You have $#{player.bank_roll}".colorize(:red)
 			@casino.menu
 		when events[3]
 			puts events[3]
 			player.bank_roll = 0
-			puts "You are broke now. That means $#{player.bank_roll}"
+			puts "You are broke now. That means $#{player.bank_roll}".colorize(:red)
 			@casino.menu
 		when events[4]
 			puts events[4]
 			player.bank_roll = player.bank_roll + 1000000
-			puts "Wow you are rich. You have $#{player.bank_roll}"
+			puts "Wow you are rich. You have $#{player.bank_roll}".colorize(:green)
 			@casino.menu
 		when events[5]
 			puts events[5]
@@ -72,7 +72,7 @@ class Bathroom
 				@casino.menu
 			end
 		else
-			puts "ops"
+			puts "oops"
 		end
 	end
 	def asain_game
@@ -80,14 +80,14 @@ class Bathroom
 		left = 1
 		num = rand(2)
 		puts "One man holds up 2 straws and is grabbing the ends."
-		puts "They ask which one is longer? Right or left"
+		puts "They ask which one is longer? Right or Left"
 		straws = gets.strip.downcase
 		case straws
 		when "right"
 			puts "You choose #{straws}"
 			if num = right
-				puts "You choose correctly!"
-				puts "They give you $50000"
+				puts "You chose correctly!".colorize(:green)
+				puts "They give you $50000".colorize(:green)
 				player.bank_roll = player.bank_roll + 50000
 				puts "They start to suspect you cheated."
 				puts "You run away rapidly."
@@ -100,7 +100,7 @@ class Bathroom
 					puts "The hospital bill costs $10000, you are in a debt."
 					@casino.menu
 				else player.bank_roll > 50000
-					puts "They take the money and kick you out"
+					puts "They take the money and kick you out".colorize(:red)
 					player.bank_roll = player.bank_roll - 50000
 					@casino.menu
 				end
@@ -109,7 +109,7 @@ class Bathroom
 			puts "You choose #{straws}"
 			if num = left
 				puts "You guesed correctly!"
-				puts "They give you $50000"
+				puts "They give you $50000".colorize(:green)
 				player.bank_roll = player.bank_roll + 50000
 				puts "They start to suspect you cheated."
 				puts "You run away rapidly."
@@ -117,7 +117,7 @@ class Bathroom
 			else num != left
 			  puts "You lost and they need $50000 cash or they will break your leg!"
 				if player.bank_roll < 50000
-					puts "You only have #{player.bank_roll} so they take all your money and break your leg!"
+					puts "You only have $#{player.bank_roll} so they take all your money and break your leg!"
 					player.bank_roll = player.bank_roll - 10000
 					puts "The hospital bill costs $10000, you are in a debt."
 					@casino.menu

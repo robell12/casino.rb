@@ -1,4 +1,3 @@
-require 'pry'
 require 'colorize'
 require_relative 'player'
 require_relative 'highlow'
@@ -22,7 +21,7 @@ class Casino
   def menu
 		puts "\nWhat would you like to play?"
   	puts "----Games---".colorize(:light_blue)
-  	choice_1 = "\nHighlow\nBlackjack\nSlots\nRoulette\nGo To Bathroom\nUse ATM\nView Players\nExit Casino\n "
+  	choice_1 = "\nHighlow\nBlackjack\nSlots\nRoulette\nGo To Bathroom\nUse ATM\nView Players\nCashout and Exit Casino\n "
     puts choice_1
   	puts "Please Select One"
   	choice = gets.strip.downcase
@@ -41,7 +40,9 @@ class Casino
         player_menu
       when "use", "atm", "use atm"
       	atm
-  		when "exit", "casino"
+  		when "cashout", "exit", "casino"
+				total = player.bank_roll
+				puts "\nHere is your money: $#{total}.\n"
         puts "Thank you for visiting the RUBY CASINO! Come back soon!"
   			exit
   		else
